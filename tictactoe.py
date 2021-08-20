@@ -3,6 +3,11 @@
 
 import random
 
+print('''
+GREETINGS, welcome to a friendly 1v1 tic tac toe game!
+Feel free to have a friend with you to play this simple
+game, since this is fun for anyone of any age! There is
+really nothing to explain, I hope you enjoy!''')
 def drawBoard(board):
     # This function prints out the board that it was passed.
 
@@ -20,28 +25,28 @@ def drawBoard(board):
     print('   |   |')
 
 def inputPlayerLetter():
-    # Lets the player type which letter they want to be.
+    # Lets either player type which letter they want to be.
     # Returns a list with the player's letter as the first item, and the computer's letter as the second.
     letter = ''
     while not (letter == 'X' or letter == 'O'):
         print('Do you want to be X or O?')
         letter = input().upper()
 
-    # the first element in the tuple is the player's letter, the second is the computer's letter.
+    # the first element in the tuple is the first player's letter, the second is the computer's letter.
     if letter == 'X':
         return ['X', 'O']
     else:
         return ['O', 'X']
 
 def whoGoesFirst():
-    # Randomly choose the player who goes first.
+    # Randomly choose which player goes first.
     if random.randint(0, 1) == 0:
         return 'computer'
     else:
         return 'player'
 
 def playAgain():
-    # This function returns True if the player wants to play again, otherwise it returns False.
+    # This function returns True if the players wants to play again, otherwise it returns False.
     print('Do you want to play again? (yes or no)')
     return input().lower().startswith('y')
 
@@ -157,7 +162,7 @@ while True:
 
             if isWinner(theBoard, playerLetter):
                 drawBoard(theBoard)
-                print('Hooray! You have won the game!')
+                print('Player 1 has beaten you! P1 wins!')
                 gameIsPlaying = False
             else:
                 if isBoardFull(theBoard):
@@ -168,13 +173,14 @@ while True:
                     turn = 'computer'
 
         else:
-            # Computer's turn.
-            move = getComputerMove(theBoard, computerLetter)
+            # Player 2's turn.
+            drawBoard(theBoard)
+            move = getPlayerMove(theBoard)
             makeMove(theBoard, computerLetter, move)
 
             if isWinner(theBoard, computerLetter):
                 drawBoard(theBoard)
-                print('The computer has beaten you! You lose.')
+                print('Player 2 has beaten you! P2 wins!')
                 gameIsPlaying = False
             else:
                 if isBoardFull(theBoard):
