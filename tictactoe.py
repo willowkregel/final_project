@@ -1,5 +1,7 @@
 
-# Tic Tac Toe
+# Tic Tac Toe 
+# Converting to OOC
+import wsgiref.simple_server
 
 import random
 
@@ -192,3 +194,21 @@ while True:
 
     if not playAgain():
         break
+#Start of OOC tictactoe:
+#import random
+#import wsgiref.simple_server
+#class Tictactoe:
+#   def drawboard(self, start_response, board):
+#        headers = [('Content Type', 'text/plain; charset=utf-8')]
+#        the_board = ('   |   |\n') + (' ' + board[7] + ' | ' + board[8] + ' | ' + board[9] + '\n') + ('   |   |\n') + ('-----------\n') + ('   |   |\n') + (' ' + board[4] + ' | ' + board[5] + ' | ' + board[6] + '\n') + ('   |   |\n') + ('-----------\n') + ('   |   |\n') + (' ' + board[1] + ' | ' + board[2] + ' | ' + board[3] + '\n') + ('   |   |\n')
+#        start_response('200 OK', headers)
+#        return[the_board.encode()]
+#   def intro(self, start_response):
+#       headers = [('Content Type', 'text/plain; charset=utf-8')]
+#       intro = '''GREETINGS, welcome to a friendly 1v1 tic tac toe game!
+#       Feel free to have a friend with you to play this simple game, since this is fun for anyone of any age!
+#       There is really nothing to explain, I hope you enjoy!
+#       '''
+#       start_response('200 OK', headers)
+#       return[intro.encode()]
+#   def player_letter(self, environ, start_response):
