@@ -42,7 +42,7 @@ class Tictactoe:
                 return (a, b)
         if path == '/restart' and a and b:
             start_response('200 OK', headers)
-            connection.execute('DELETE FROM player_info WHERE player1 > ? AND player2 > ?', [1, 1])
+            connection.execute('DELETE FROM player_info WHERE player1 > ? AND player2 > ?', [0, 0])
             connection.commit()
             return['Game successfully restarted.'.encode()]
     def winner(self, bo, le):
