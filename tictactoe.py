@@ -84,8 +84,10 @@ class Play(Tictactoe):
             return[congratulations.encode()]
         else:
             if Tictactoe.is_board_full(self, board1, environ):
+                headers = [('Content-Type', 'text/plain; charset=utf-8')]
                 Tictactoe.draw_board(self, board1, start_response)
                 tie = 'The game is a tie!'
+                start_response('200 OK', headers)
                 return[tie.encode()]
 httpd = wsgiref.simple_server.make_server('', 8000, Play.lets_play(connection))
 httpd.serve_forever()
