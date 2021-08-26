@@ -89,5 +89,5 @@ class Play(Tictactoe):
                 tie = 'The game is a tie!'
                 start_response('200 OK', headers)
                 return[tie.encode()]
-httpd = wsgiref.simple_server.make_server('', 8000, Play.lets_play(connection))
+httpd = wsgiref.simple_server.make_server('', 8000, Play.lets_play(connection, start_response, environ))
 httpd.serve_forever()
