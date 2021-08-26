@@ -222,12 +222,12 @@ class Tictactoe:
         return[intro.encode()]
     def get_player_input(self, environ, start_response):
         headers = [('Content-Type', 'text/plain; charset=utf-8')]
-        path = environ['PATH_INFO']
+        path = environ['PATH_INFO'].split('/')
         parameters = urllib.parse.parse_qs(environ['QUERY_STRING'])
         a = parameters['player1'][0] if 'player1' in parameters else None
         b = parameters['player2'][0] if 'player2' in parameters else None
         connection.execute('CREATE TABLE player_info (player_1, player_2)')
-        if path == '/move' and a and b:
+        if path == 'move' and a and b:
             start_response('200 OK', headers)
             check = cursor.execute('SELECT * FROM player_info WHERE player1 = ? AND player2 = ?', [a, b]).fetchall()
             if check:
@@ -238,7 +238,7 @@ class Tictactoe:
                 self.board[b] = 'O'
                 connection.commit()
                 return (a, b)
-        if path == '/restart' and a and b:
+        if path == 'restart' and a and b:
             start_response('200 OK', headers)
             connection.execute('DELETE FROM player_info WHERE player1 > ? AND player2 > ?', [1, 1])
             connection.commit()
