@@ -28,7 +28,7 @@ class Tictactoe:
         parameters = urllib.parse.parse_qs(environ['QUERY_STRING'])
         a = parameters['player1'][0] if 'player1' in parameters else None
         b = parameters['player2'][0] if 'player2' in parameters else None
-        connection.execute('CREATE TABLE player_info (player_1, player_2)')
+        connection.execute('CREATE TABLE player_info (player1, player2)')
         if path == '/move' and a and b:
             start_response('200 OK', headers)
             check = cursor.execute('SELECT * FROM player_info WHERE player1 = ? AND player2 = ?', [a, b]).fetchall()
