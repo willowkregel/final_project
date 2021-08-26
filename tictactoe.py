@@ -61,7 +61,7 @@ class Tictactoe:
         return (board[a] == '', board[b] == '')
     def is_board_full(self, board, environ):
         for i in range(1, 10):
-            if Tictactoe.is_space_free(board, environ):
+            if Tictactoe.is_space_free(self, board, environ):
                 return False
             return True
 class Play(Tictactoe):
